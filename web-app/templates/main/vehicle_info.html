@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{%block title%} Vehicle Info {%endblock%}
+{%block content%}
+  <h1> Vehicle Info</h1>
+  <p><a href = "{%url 'mainpage'%}">Home Page</a></p>
+  {% if requests.length == 0%}
+    <p> You don't have any order!</p>
+  {% else%}
+    {% for request in requests %}
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Vehicle Information
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Driver License: <div style="color: gray; float: right; text-align: center;" >{{request.driver_license}}</div></li>
+          <li class="list-group-item">Capacity: <div style="color: gray; float: right; text-align: center;" >{{request.capacity}}</div></li>
+          <li class="list-group-item">Vehicle Type: <div style="color: gray; float: right; text-align: center;" >{{request.vehicle_type}}</div></li>
+          <li class="list-group-item">Vehicle Model Make: <div style="color: gray; float: right; text-align: center;" >{{request.vehicle_model_make}}</div></li>
+        </ul>
+      </div>
+      <br><br>
+    {% endfor %}
+   {% endif %} 
+  <p><a href = "{%url 'Edit Driver'%}">Wanna Change? </a> </p>
+  <p><a href = "{%url 'logout'%}">Log Out</a> </p>
+  <br><br><br>
+{%endblock%}

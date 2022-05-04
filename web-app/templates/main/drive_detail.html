@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+{%block title%} Open Order {%endblock%}
+{%block content%}
+  <p> Open Order</p>
+  <p><a href = "{%url 'mainpage'%}">Home Page</a></p>
+  {% if requests.length == 0%}
+    <p> You don't have any shit!</p>
+  {% else%}
+    <h2> Your Requests</h2>
+    <br>
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Request
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Passenger: <div style="color: gray; float: right; text-align: center;" >{{request.owner}}</div></li>
+          <li class="list-group-item">Destination: <div style="color: gray; float: right; text-align: center;" >{{request.address}}</div></li>
+          <li class="list-group-item">Arrival Time: <div style="color: gray; float: right; text-align: center;" >{{request.arrival_time}}</div></li>
+          <li class="list-group-item">Party Number: <div style="color: gray; float: right; text-align: center;" >{{request.party_number}}</div></li>
+          <li class="list-group-item">Required Vehicle: <div style="color: gray; float: right; text-align: center;" >{{request.vehicle_type}}</div></li>
+          <li class="list-group-item">Share Ride Status: <div style="color: gray; float: right; text-align: center;" >{{request.sharing_ride}}</div></li>
+          <li class="list-group-item">Special Request: <div style="color: gray; float: right; text-align: center;" >{{request.special_request}}</div></li>
+          <li class="list-group-item">Confirmed: <div style="color: gray; float: right; text-align: center;" >{{request.confirmed}}</div></li>
+          <li class="list-group-item">Driver: <div style="color: gray; float: right; text-align: center;" >{{request.driver}}</div></li>
+        </ul>
+      </div>
+      <br><br><br>
+    {%if request.driver != ""%}
+        </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Driver Name: <div style="color: gray; float: right; text-align: center;" >{{driver.user}}</div></li>
+                <li class="list-group-item">Driver License: <div style="color: gray; float: right; text-align: center;" >{{driver.driver_license}}</div></li>
+                <li class="list-group-item">Capacity: <div style="color: gray; float: right; text-align: center;" >{{driver.capacity}}</div></li>
+                <li class="list-group-item">Vehicle Type: <div style="color: gray; float: right; text-align: center;" >{{driver.vehicle_type}}</div></li>
+                <li class="list-group-item">Vehicle Model Make: <div style="color: gray; float: right; text-align: center;" >{{request.vehicle_model_make}}</div></li>
+            </ul>
+        </div>
+        <br><br><br>
+    {%endif%}
+    
+
+   {% endif %} 
+  <p><a href = "{%url 'logout'%}">Log Out</a> </p>
+  <br><br><br>
+  
+{%endblock%}

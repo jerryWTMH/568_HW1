@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{%block title%} Edit Driver {%endblock%}
+{%block content%}
+<h1>Edit Driver</h1>
+  <p><a href = "{%url 'mainpage'%}">Home Page</a></p>
+  <form action = "" method = "post">
+    {%csrf_token%} 
+    {{form.as_p}}
+    <button type = "submit">Post</button> 
+  </form>
+
+  <p><a href = "{%url 'logout'%}">Log Out</a> </p>
+  <br><br><br>
+{%endblock%}

@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{%block title%} Edit Passenger {%endblock%}
+{%block content%}
+<h1>Edit Passenger</h1>
+  <p> Driver Basic Information</p>
+  <p><a href = "{%url 'mainpage'%}">Home Page</a></p>
+  {%for form in forms%}
+    <form action = "" method = "post">
+        {%csrf_token%} 
+        {{form.as_p}}
+        <button type = "submit">Post</button> 
+    </form>
+  {%endfor%}
+
+  <p><a href = "{%url 'logout'%}">Log Out</a> </p>
+  <br><br><br>
+{%endblock%}

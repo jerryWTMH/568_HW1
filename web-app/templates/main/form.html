@@ -1,0 +1,13 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <title>Title of the document</title>
+  </head>
+  <body>
+          <form method="POST" action="{% url 'form' %}">{% csrf_token %}
+            <input type="text" name="username">
+            <input type="submit" name="submit">
+          </form>  
+  </body>
+  </html>

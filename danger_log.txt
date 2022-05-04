@@ -1,0 +1,28 @@
+Operation Danger Log
+
+ECE 568 HW1 Ridesharing Web App Development (netid ch450/nh185)
+
+1/10
+Login authentication failure. We found that we setup a wrong redirection page after login failure which allows access to homepage despite login failure.
+
+1/15
+We found that we mixed up driver’s view and passenger’s view in a subtle way that confirmation info cannot be correctly reflected on the page after the driver confirmed a ride. We correct it by streamlining our database settings and put if-else condition checking in html page so that the features can be displayed according to user’s access level
+
+1/24
+When we were testing our ride editing page, we noticed that our initial settings were wrong because we query the entire  ride list. This mistake led to an awkward situation when user updates one ride, every ride in the database was updated accordingly. 
+
+
+1/26
+When we were trying to use the package from the pip3 to implement the searching filter(SearchListView), we found that we cannot easily access the input (ex: request) from the previous page, because the pip3 package(SearchListView) just slightly reorganize the syntax for the function in views.py. Therefore, we have to figure out another way to get the information from the input (ex: request.user.id).
+
+1/28
+When we were testing our ride sharing function, we found that the sharers would not be added into the list in the Database of ride orders (PassegnerInfo). This mistake led to an awkward situation that whenever the driver click the “complete button”, and sharers would not receive the email from the Host.
+
+1/29 
+When we were testing the function of Editing driver info, we noticed that if the user hasn’t registered as a driver in our web application, the system will crash immediately. The reason for causing this error is that the Database of driver information (DriverInfo) doesn’t contain any entry for the user.
+
+1/30
+When we were testing the function of editing the riding order in the page of “My Ride Info”, we found that if we change the order which is not the first order in the “My Ride Info”, our web application would edit the wrong order in our Database of ride orders(PassegnerInfo). Additionally, it would leave the order which we want to edit as it is before, and doesn’t change at all. 
+
+1/31
+When we were testing whether our web application could be used in the environment of Docker, we found that we cannot correctly redirect our first page into our login page. 

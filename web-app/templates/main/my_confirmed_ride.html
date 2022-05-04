@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{%block title%} My Comfirmed Ride {%endblock%}
+{%block content%}
+  <h2> My Confirmed Ride (Passenger)</h2>
+  <p><a href = "{%url 'mainpage'%}">Home Page</a></p>
+  {% if requests.length == 0%}
+    <p> You don't have anything!</p>
+  {% else%}
+  
+  <form method="GET" action="" >
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-primary" type = "submit">Search</button>
+    <br>
+  </form>
+  {% for request in requests %}
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Request
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Passenger: <div style="color: gray; float: right; text-align: center;" >{{request.owner}}</div></li>
+        <li class="list-group-item">Destination: <div style="color: gray; float: right; text-align: center;" >{{request.address}}</div></li>
+        <li class="list-group-item">Arrival Time: <div style="color: gray; float: right; text-align: center;" >{{request.arrival_time}}</div></li>
+        <li class="list-group-item">Party Number: <div style="color: gray; float: right; text-align: center;" >{{request.party_number}}</div></li>
+        <li class="list-group-item">Required Vehicle: <div style="color: gray; float: right; text-align: center;" >{{request.vehicle_type}}</div></li>
+        <li class="list-group-item">Share Ride Status: <div style="color: gray; float: right; text-align: center;" >{{request.sharing_ride}}</div></li>
+        <li class="list-group-item">Special Request: <div style="color: gray; float: right; text-align: center;" >{{request.special_request}}</div></li>
+        <li class="list-group-item">Confirmed: <div style="color: gray; float: right; text-align: center;" >{{request.confirmed}}</div></li>
+        <li class="list-group-item">Complete: <div style="color: gray; float: right; text-align: center;" >{{request.completed}}</div></li>
+        <li class="list-group-item">Driver: <div style="color: gray; float: right; text-align: center;" >{{request.driver}}</div></li>
+      </ul>
+    </div>
+    <br><br><br>
+  {% endfor %}
+ {% endif %} 
+  <p><a href = "{%url 'logout'%}">Log Out</a> </p>
+  <br><br><br>
+{%endblock%}

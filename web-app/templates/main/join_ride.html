@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{%block title%} Join a ride {%endblock%}
+{%block content%}
+
+<h1>Welcome to join</h1>
+<p><a href = "{%url 'mainpage'%}">Home Page</a></p>
+  <form method="GET" action="" >
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn" type = "submit">Search</button>
+  </form>
+  {%for object in object_list%}
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Request
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Order Owner: <div style="color: gray; float: right; text-align: center;" >{{object.owner}}</div></li>
+        <li class="list-group-item">Address: <div style="color: gray; float: right; text-align: center;" >{{object.address}}</div></li>
+        <li class="list-group-item">Party Number: <div style="color: gray; float: right; text-align: center;" >{{object.party_number}}</div></li>
+        <li class="list-group-item">Arrival Time: <div style="color: gray; float: right; text-align: center;" >{{object.arrival_time}}</div></li>  
+        <button type= "submit" class="btn btn-primary"><a style = "color: white;" href="{%url 'Share Detail' object.id %}" > Share </a></button>
+      </ul>
+    </div>
+    <br><br><br>
+  {%endfor%}
+  
+  {%endblock%}

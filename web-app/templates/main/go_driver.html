@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{%block title%} Driver, Let's Go! {%endblock%}
+{%block content%}
+  <h1> Herer are the open orders</h1>
+  <p><a href = "{%url 'mainpage'%}">Home Page</a></p>
+  {% if requests.length == 0%}
+    <p> You don't have any order!</p>
+  {% else%}
+    <form method="GET" action="" >
+      {% csrf_token %}
+      {{form.as_p}}
+      <button class="btn" type = "submit">Search</button>
+    </form>
+    {% for object in object_list %}
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Request
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Passenger: <div style="color: gray; float: right; text-align: center;" >{{object.owner}}</div></li>
+          <li class="list-group-item">Destination: <div style="color: gray; float: right; text-align: center;" >{{object.address}}</div></li>
+          <li class="list-group-item">Arrival Time: <div style="color: gray; float: right; text-align: center;" >{{object.arrival_time}}</div></li>
+          <li class="list-group-item">Party Number: <div style="color: gray; float: right; text-align: center;" >{{object.party_number}}</div></li>
+          <li class="list-group-item">Required Vehicle: <div style="color: gray; float: right; text-align: center;" >{{object.vehicle_type}}</div></li>
+          <li class="list-group-item">Share Ride Status: <div style="color: gray; float: right; text-align: center;" >{{object.sharing_ride}}</div></li>
+          <li class="list-group-item">Special Request: <div style="color: gray; float: right; text-align: center;" >{{object.special_request}}</div></li>
+          <li class="list-group-item">Confirmed: <div style="color: gray; float: right; text-align: center;" >{{object.confirmed}}</div></li>
+          <button type= "submit" class="btn btn-primary"><a style = "color: white;" href="{%url 'Drive Detail' object.id %}">Confirmed</a></button>
+        </ul>
+      </div>
+      <br><br><br>
+    {% endfor %}
+   {% endif %} 
+  <p><a href = "{%url 'logout'%}">Log Out</a> </p>
+  <br><br><br>
+{%endblock%}

@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{%block title%} Request your ride {%endblock%}
+{%block content%}
+<h1>Request a Ride</h1>
+  <p><a href = "{%url 'mainpage'%}">Home Page</a></p>
+  
+  <form action = "" method = "post">
+    {%csrf_token%} 
+    <div class="mb-3">{{form.as_p}}</div>
+    <button type="submit" class="btn btn-primary">Post</button>
+  </form>
+  <p><a href = "{%url 'logout'%}">Log Out</a> </p>
+  <br><br><br>
+{%endblock%}
+
+

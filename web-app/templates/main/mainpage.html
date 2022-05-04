@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{%block title%} My Ride Info {%endblock%}
+{%block content%}
+
+<nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
+  <h1 class="navbar-brand">This is {{user.username}}'s Page</h1>
+  <nav class="nav nav-pills flex-column">
+    <a class="nav-link" aria-current="page" justify-content: center href="{% url 'Request Ride' %}">Request a  Ride</a>
+    <a class="nav-link" aria-current="page" href="{% url 'Join a Ride' %}">Join a Ride</a>
+    <a class="nav-link" aria-current="page" href="{% url 'My Ride info' %}">My Ride info</a>
+    <a class="nav-link" aria-current="page" href="{% url 'My Confirmed Ride' %}">My Confirmed Ride</a>
+    {% if driver == null %}
+    <a class="nav-link" aria-current="page" href="{% url 'Driver registration' %}">Driver registration</a>
+    {%endif %}
+    
+    {% if driver != null %}
+    <a class="nav-link" aria-current="page" href="{% url 'My Confirmed Ride Driver' %}">My Confirmed Ride Driver</a>
+    <a class="nav-link" aria-current="page" href="{% url 'Go for a drive' %}">Go for a drive</a>
+    <a class="nav-link" aria-current="page" href="{% url 'Edit Driver' %}">Edit Driver</a>
+    <a class="nav-link" aria-current="page" href="{% url 'My vehicle' %}">My vehicle</a>
+    {%endif %}
+    
+    <a class="nav-link" aria-current="page" href="{% url 'logout' %}">Log out</a>
+  </nav>
+</nav>
+{% if driver == null %}
+    <a>You are not a driver yet! Please register to access more features!</a>
+{%endif%}
+{% if user.is_authenticated%}
+    <p>This is a paragraph.</p>
+{% endif %}
+<link rel="stylesheet" href="mainpage.css">
+{%endblock%}
